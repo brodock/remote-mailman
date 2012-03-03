@@ -34,10 +34,16 @@ class Mailman < Mechanize
     members = []
     login()
     get("#{@config.url}/members") do |members_page|
-      members_page.search('//table[@width="90%"]/tr[position()>2]/td[2]').each do |td_tags|
+      members_page.search('//table[@width="90%"]/tr[position()>2]').each do |rows|
         member = OpenStruct.new
-        member.name = td_tags.xpath('input[@type="TEXT"]').first['value']
-        member.email = td_tags.xpath('a').first.children.to_s
+
+        columns = rows.search('td')
+        member.name = columns[1].xpath('input[@type="TEXT"]').first['value']
+        member.email = columns[1].xpath('a').first.children.to_s
+        member.moderated = checkbox_to_bool(columns[2].xpath('center/input[@type="CHECKBOX"]').first)
+        member.hidden = checkbox_to_bool(columns[3].xpath('center/input[@type="CHECKBOX"]').first)
+        member.nomail = checkbox_to_bool(columns[4].xpath('center/input[@type="CHECKBOX"]').first)
+
         members << member
       end
     end
@@ -57,4 +63,7 @@ class Mailman < Mechanize
     @logged_in = true
   end
 
+  def checkbox_to_bool(element)
+    element['value'] == 'on' ? true : false
+  end
 end
