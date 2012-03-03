@@ -1,0 +1,17 @@
+=Remote GNU Mailman
+
+This is a working in progress project to build a ruby API for the most usefull Mailman tasks using Mechanize.
+
+So far I've done:
+* Login to Mailman administration interface
+* Listing subscribed users
+
+== How to use
+
+  mailman = Mailman.new
+  mailman.config = {'host' => 'lists.example.org', 'path' => '/admin.cgi/mylist-example.org', 'password' => 'adminpassword'}
+  mailman.members # will list subscribed users
+
+You can also store your configuration on a YAML file and load it like that:
+  mailman.config = YAML.load(File.read("config.yml"))
+
