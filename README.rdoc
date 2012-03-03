@@ -15,3 +15,8 @@ So far I've done:
 You can also store your configuration on a YAML file and load it like that:
   mailman.config = YAML.load(File.read("config.yml"))
 
+== Minimum Requirements
+
+  It has been tested with Mailman 2.1.14, it may or may not work with older versions.
+  You will need to change *admin_member_chunksize* parameter on Mailman to a value bigger than the amount of subscribed users 
+  In future versions, this limitation will no longer exist, but setting a bigger value will increase speed.
