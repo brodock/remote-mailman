@@ -2,6 +2,7 @@
 # encoding: utf-8
 
 require 'rubygems'
+require 'bundler/setup'
 require 'mechanize'
 require 'ostruct'
 
@@ -14,7 +15,7 @@ class Mailman < Mechanize
   end
 
   def config=(config={})
-    unless config.has_key? 'host' and config.has_key? 'path' and config.has_key? 'password'
+    unless config.is_a? Hash and config.has_key? 'host' and config.has_key? 'path' and config.has_key? 'password'
       raise ArgumentError, "Invalid configuration hashes"
     end
   
