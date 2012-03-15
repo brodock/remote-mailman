@@ -6,6 +6,11 @@ require 'bundler/setup'
 require 'mechanize'
 require 'ostruct'
 
+module RemoteMailman
+  class InvalidPageError < StandardError; end
+  class NoConfigurationError < StandardError; end
+end
+
 class Mailman < Mechanize
   def initialize()
     super
@@ -31,8 +36,9 @@ class Mailman < Mechanize
     @config
   end
 
-  def members()
-    members = []
+  def members(options = {:force => false})
+    return @members if defined? @members and options['force'] == false
+    @members = []
     login()
     get("#{@config.url}/members") do |members_page|
       members_page.search('//table[@width="90%"]/tr[position()>2]').each do |rows|
@@ -45,21 +51,23 @@ class Mailman < Mechanize
         member.hidden = checkbox_to_bool(columns[3].xpath('center/input[@type="CHECKBOX"]').first)
         member.nomail = checkbox_to_bool(columns[4].xpath('center/input[@type="CHECKBOX"]').first)
 
-        members << member
+        @members << member
       end
     end
-    members
+    @members
   end
 
   private
 
   def login()
     return if @logged_in
-    raise RuntimeError, "Configuration not defined" if @config.nil?
+    raise RemoteMailman::NoConfigurationError, "Configuration not defined" if @config.nil?
+    
     get(@config.url) do |login_page|
-      form = login_page.form_with(:action => "#{@config.path}")
-      form.adminpw = @config.password
-      form.submit
+        form = login_page.form_with(:action => "#{@config.path}")
+        raise RemoteMailman::InvalidPageError.new("Invalid login page received") if form.nil?
+        form.adminpw = @config.password
+        form.submit
     end
     @logged_in = true
   end

@@ -1,0 +1,165 @@
+<HTML>
+<HEAD>
+<LINK REL="SHORTCUT ICON" HREF="/icons/mm-icon.png">
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>Administração da My Awesome List (Gerenciamento&nbsp;de&nbsp;membros...)</TITLE>
+</HEAD>
+<BODY bgcolor="white"
+dir="ltr">
+<center><h2>Seção de administração da lista de discussão My Awesome List<br>Gerenciamento&nbsp;de&nbsp;membros...</h2></center><hr>
+<FORM action="/admin.cgi/my-awesome-list/members" method="POST" enctype="multipart/form-data">
+
+  <table WIDTH="100%">
+    <tr>
+      <td><center><strong>Categorias de Configuração</strong></center></td>
+      <td><center><strong>Outras Atividades Administrativas</strong></center></td>
+    </tr>
+    <tr>
+      <td>
+          <table>
+            <tr VALIGN="top">
+              <td>
+                  <ul>
+                  <li><a href="/admin.cgi/my-awesome-list/general">Opções Gerais</a>
+                  <li><a href="/admin.cgi/my-awesome-list/passwords">Senhas</a>
+                  <li><a href="/admin.cgi/my-awesome-list/language">opções&nbsp;de&nbsp;idioma</a>
+                  <li><strong>Gerenciamento&nbsp;de&nbsp;membros...</strong>
+<ul>
+<li><a href="/admin.cgi/my-awesome-list/members/list"><strong>[Lista&nbsp;de&nbsp;membros]</strong></a>
+<li><a href="/admin.cgi/my-awesome-list/members/add">Inscrição&nbsp;em&nbsp;massa</a>
+<li><a href="/admin.cgi/my-awesome-list/members/remove">Remoção&nbsp;em&nbsp;massa</a>
+</ul>
+
+                  <li><a href="/admin.cgi/my-awesome-list/nondigest">Opções&nbsp;não&nbsp;digest</a>
+                  <li><a href="/admin.cgi/my-awesome-list/digest">Opções digest</a>
+                  </ul>
+</td>
+              <td>
+                  <ul>
+                  <li><a href="/admin.cgi/my-awesome-list/privacy">Opções de Privacidade...</a>
+                  <li><a href="/admin.cgi/my-awesome-list/bounce">Processamento de Retorno</a>
+                  <li><a href="/admin.cgi/my-awesome-list/archive">Opções de Arquivamento</a>
+                  <li><a href="/admin.cgi/my-awesome-list/gateway">gateways&nbsp;Mail&lt;-&gt;News</a>
+                  <li><a href="/admin.cgi/my-awesome-list/autoreply">Auto-Resposta</a>
+                  <li><a href="/admin.cgi/my-awesome-list/contentfilter">Filtragem&nbsp;de&nbsp;Conteúdo</a>
+                  <li><a href="/admin.cgi/my-awesome-list/topics">Tópicos</a>
+                  </ul>
+</td>
+            </tr>
+          </table>
+</td>
+      <td>
+          <ul>
+          <li><a href="/admindb.cgi/my-awesome-list">Supervisionar requisições administrativas de moderação pendentes</a>
+          <li><a href="/listinfo.cgi/my-awesome-list">Ir para a página de informações gerais da lista</a>
+          <li><a href="/edithtml.cgi/my-awesome-list">Editar as páginas HTML públicas e arquivos de texto</a>
+          <li><a href="http://www.example.org/private.cgi/my-awesome-list/">Ir para os arquivos da lista</a><br>&nbsp;<br>
+          <li><a href="/admin.cgi/my-awesome-list/logout"><FONT SIZE="+2"><b>Sair</b></FONT></a>
+          </ul>
+</td>
+    </tr>
+  </table>
+<hr>Faça suas modificações nas seções seguintes, então submeta
+        as modificações usando o botão <em>Enviar suas modificações</em> abaixo.<p>
+  <table WIDTH="100%">
+    <tr>
+      <td COLSPAN="2" BGCOLOR="#99ccff"><center><h2>Lista de Membros</h2></center></td>
+    </tr>
+  </table>
+
+  <table WIDTH="100%">
+    <tr>
+      <td><div align="right">Encontrar membro <a href="http://docs.python.org/library/re.html#regular-expression-syntax">(ajuda)</a>:</div></td>
+      <td><INPUT name="findmember" type="TEXT" value="" size="40" ></td>
+      <td><INPUT name="findmember_btn" type="SUBMIT" value="Procurar..." ></td>
+    </tr>
+  </table>
+<hr><p><a href="http://www.example.org/admin.cgi/my-awesome-list/members/list?legend=yes">Clique aqui para incluir a legenda para esta tabela.</a><center>
+  <table WIDTH="90%" BORDER="2">
+    <tr>
+      <td COLSPAN="11" BGCOLOR="#dddddd"><center><em>2 membros no total</em></center></td>
+    </tr>
+    <tr>
+      <td BGCOLOR="#dddddd"><center>desinscr</center></td>
+      <td BGCOLOR="#dddddd"><center>endereço do membro<br>nome do membro</center></td>
+      <td BGCOLOR="#dddddd"><center>moderado</center></td>
+      <td BGCOLOR="#dddddd"><center>ocultar</center></td>
+      <td BGCOLOR="#dddddd"><center>sem mensagens<br>[razão]</center></td>
+      <td BGCOLOR="#dddddd"><center>notif</center></td>
+      <td BGCOLOR="#dddddd"><center>menos eu</center></td>
+      <td BGCOLOR="#dddddd"><center>sem duplicados</center></td>
+      <td BGCOLOR="#dddddd"><center>digest</center></td>
+      <td BGCOLOR="#dddddd"><center>plano</center></td>
+      <td BGCOLOR="#dddddd"><center>idioma</center></td>
+    </tr>
+    <tr>
+      <td><center><INPUT name="member1%40example.org_unsub" type="CHECKBOX" value="off" ></center></td>
+      <td><a href="/options.cgi/my-awesome-list/member1--at--example.org">member1@example.org</a><br><INPUT name="member1%40example.org_realname" type="TEXT" value="Member 1" size="38" ><INPUT name="user" type="HIDDEN" value="member1%40example.org" ></td>
+      <td><center><INPUT name="member1%40example.org_mod" type="CHECKBOX" value="off" ></center></td>
+      <td><center><INPUT name="member1%40example.org_hide" type="CHECKBOX" value="off" ></center></td>
+      <td><center><INPUT name="member1%40example.org_nomail" type="CHECKBOX" value="off" ></center></td>
+      <td><center><INPUT name="member1%40example.org_ack" type="CHECKBOX" value="off" ></center></td>
+      <td><center><INPUT name="member1%40example.org_notmetoo" type="CHECKBOX" value="off" ></center></td>
+      <td><center><INPUT name="member1%40example.org_nodupes" type="CHECKBOX" value="on" CHECKED ></center></td>
+      <td><center><INPUT name="member1%40example.org_digest" type="CHECKBOX" value="off" ></center></td>
+      <td><center><INPUT name="member1%40example.org_plain" type="CHECKBOX" value="on" CHECKED ></center></td>
+      <td><center>
+<Select name="member1%40example.org_language">
+ <option value="en"> Inglês (EUA) </option>
+ <option value="pt_BR" Selected> Português (Brasil) </option>
+</Select></center></td>
+    </tr>
+    <tr>
+      <td><center><INPUT name="member2%40example.org_unsub" type="CHECKBOX" value="off" ></center></td>
+      <td><a href="/options.cgi/my-awesome-list/member2--at--example.org">member2@example.org</a><br><INPUT name="member2%40example.org_realname" type="TEXT" value="Member 2" size="38" ><INPUT name="user" type="HIDDEN" value="member2%40example.org" ></td>
+      <td><center><INPUT name="member2%40example.org_mod" type="CHECKBOX" value="on" ></center></td>
+      <td><center><INPUT name="member2%40example.org_hide" type="CHECKBOX" value="on" ></center></td>
+      <td><center><INPUT name="member2%40example.org_nomail" type="CHECKBOX" value="on" ></center></td>
+      <td><center><INPUT name="member2%40example.org_ack" type="CHECKBOX" value="off" ></center></td>
+      <td><center><INPUT name="member2%40example.org_notmetoo" type="CHECKBOX" value="off" ></center></td>
+      <td><center><INPUT name="member2%40example.org_nodupes" type="CHECKBOX" value="on" CHECKED ></center></td>
+      <td><center><INPUT name="member2%40example.org_digest" type="CHECKBOX" value="off" ></center></td>
+      <td><center><INPUT name="member2%40example.org_plain" type="CHECKBOX" value="on" CHECKED ></center></td>
+      <td><center>
+<Select name="member2%40example.org_language">
+ <option value="en"> Inglês (EUA) </option>
+ <option value="pt_BR" Selected> Português (Brasil) </option>
+</Select></center></td>
+    </tr>
+  </table>
+</center><center>
+  <table CELLPADDING="2" CELLSPACING="0" BORDER="0">
+    <tr>
+      <td ALIGN="middle"><strong><INPUT name="setmemberopts_btn" type="SUBMIT" value="Enviar suas modificações" ></strong></td>
+    </tr>
+  </table>
+</center><hr>
+
+  <table WIDTH="100%">
+    <tr>
+      <td COLSPAN="2" BGCOLOR="#99ccff"><center><h2>Tarefas Adicionais dos Membros</h2></center></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td COLSPAN="2"><li>Ajustar o bit de moderação em todos, incluindo
+            estes membros que não estão visíveis atualmente.</td>
+    </tr>
+    <tr>
+      <td>
+          <table CELLSPACING="5">
+            <tr>
+              <td><INPUT name="allmodbit_val" type="RADIO" value="0" CHECKED >Desativar</td>
+              <td><INPUT name="allmodbit_val" type="RADIO" value="1" >Ativar</td>
+            </tr>
+          </table>
+</td>
+      <td><INPUT name="allmodbit_btn" type="SUBMIT" value="Ajustar" ></td>
+    </tr>
+  </table>
+
+</FORM>
+</BODY>
+</HTML>
