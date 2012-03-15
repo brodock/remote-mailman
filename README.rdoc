@@ -1,6 +1,6 @@
 =Remote GNU Mailman
 
-This is a working in progress project to build a ruby API for the most usefull Mailman tasks using Mechanize.
+This is a working in progress project to build a ruby API for the most useful Mailman tasks using Mechanize.
 
 So far I've done:
 * Login to Mailman administration interface
@@ -17,6 +17,30 @@ You can also store your configuration on a YAML file and load it like that:
 
 == Minimum Requirements
 
-  It has been tested with Mailman 2.1.14, it may or may not work with older versions.
-  You will need to change *admin_member_chunksize* parameter on Mailman to a value bigger than the amount of subscribed users 
-  In future versions, this limitation will no longer exist, but setting a bigger value will increase speed.
+It has been tested with Mailman 2.1.14, it may or may not work with older versions.
+
+You will need to change *admin_member_chunksize* parameter on Mailman to a value bigger than the amount of subscribed users.
+
+In future versions, this limitation will no longer exist, but defining a bigger value will increase speed as it will need to crawl less pages.
+
+== Roadmap
+
+This are the planned features (in no specific order), if you want to help, please read the {How to Contribute}[rdoc-ref:README@How+to+contribute] :
+
+* Adding new member
+* Adding members in batch
+* Searching for subscribed members (by name, email)
+* Filter members by membership flags (moderated, hide, nomail, etc)
+* Removing a member
+* Removing members in batch
+* Manage moderated messages (list, approve, decline, etc)
+
+== How to contribute
+
+1. Fork the project
+2. Save one or more HTML pages that are needed for the feature you are accessing on <b>'spec/templates'</b> folder
+3. Create RSpec tests using FakeWeb to simulate Mailman
+4. Code one or more features
+5. Open a pull request :)
+
+You can also fill bug reports for implemented features and contribute with more RSpec tests.
