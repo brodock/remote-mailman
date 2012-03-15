@@ -11,6 +11,7 @@ module RemoteMailman
   class NoConfigurationError < StandardError; end
 end
 
+# Remote Mailman Mechanized agent
 class Mailman < Mechanize
   def initialize()
     super
@@ -19,6 +20,12 @@ class Mailman < Mechanize
     @logged_in = false
   end
 
+  # Defines a configuration hash with url and credentials to the Mailman installation
+  # hash must have the following keys: 
+  #
+  # * host: with the hostname
+  # * path: with a starting slash and the admin.cgi path
+  # * password: with the admin password
   def config=(config={})
     unless config.is_a? Hash and config.has_key? 'host' and config.has_key? 'path' and config.has_key? 'password'
       raise ArgumentError, "Invalid configuration hashes"
@@ -32,14 +39,19 @@ class Mailman < Mechanize
     @config.freeze
   end
 
+  # Returns configuration OpenStruct object
   def config()
     @config
   end
 
+  # Returns subscribed members and cache result list
+  # 
+  # You can pass :force => true if you want it to clear cached result and try to retrieve again
   def members(options = {:force => false})
     return @members if defined? @members and options['force'] == false
     @members = []
     login()
+    
     get("#{@config.url}/members") do |members_page|
       members_page.search('//table[@width="90%"]/tr[position()>2]').each do |rows|
         member = OpenStruct.new
@@ -69,6 +81,7 @@ class Mailman < Mechanize
         form.adminpw = @config.password
         form.submit
     end
+    
     @logged_in = true
   end
 

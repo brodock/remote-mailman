@@ -27,6 +27,7 @@ In future versions, this limitation will no longer exist, but defining a bigger 
 
 This are the planned features (in no specific order), if you want to help, please read the {How to Contribute}[rdoc-ref:README@How+to+contribute] :
 
+* Gemify
 * Adding new member
 * Adding members in batch
 * Searching for subscribed members (by name, email)
@@ -43,4 +44,4 @@ This are the planned features (in no specific order), if you want to help, pleas
 4. Code one or more features
 5. Open a pull request :)
 
-You can also fill bug reports for implemented features and contribute with more RSpec tests.
+You can also fill bug reports for implemented features, contribute with more RSpec tests and documentation.
